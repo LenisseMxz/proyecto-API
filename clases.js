@@ -1,4 +1,4 @@
-class vehiculo {
+class Vehiculo {
     constructor(id, placa, marca, modelo) {
         this.id = id;
         this.placa = placa;
@@ -7,12 +7,20 @@ class vehiculo {
     }
 }
 
-class almacen {
+class Almacen {
     constructor() {
-        this.contenido = [];
+        this.vehiculos = [];
     }
     agregar(vehiculo) {}
-    buscar(placa) {}
+    buscar(placa) {
+        let vehiculo = this.vehiculos.find(vehiculo => vehiculo == placa);
+        return vehiculo;
+    }
     listar() {}
-    Eliminar(placa) {}
+    Eliminar(placa) {
+        let vehiculo = this.vehiculos.find(vehiculo => vehiculo == placa);
+        this.vehiculo.splice(vehiculo.id, 1);
+
+        return null;
+    }
 }

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar vehiculo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="clases.js"></script>
+    <script src="script.js"></script>
 </head>
 <style>
     #div-formulario {
@@ -44,28 +46,29 @@
     </header>
     <main class="container text-center">
         <div id="div-formulario" class="row align-items-center">
-            <form action="/api/vehiculos" method="POST" id="formulario">
+            <form action="/vehiculos" method="POST" id="formulario">
                 <div class="col" id="div-inputs">
-                    <label for="marca">Placa:</label>
+                    <label for="placa">Placa:</label>
+                    <input type="text" id="placa" name="placa" required>
+                </div>
+                <div class="col" id="div-inputs">
+                    <label for="marca">Marca:</label>
                     <input type="text" id="marca" name="marca" required>
                 </div>
                 <div class="col" id="div-inputs">
-                    <label for="modelo">Marca:</label>
+                    <label for="modelo">Modelo:</label>
                     <input type="text" id="modelo" name="modelo" required>
                 </div>
-                <div class="col" id="div-inputs">
-                    <label for="anio">Modelo:</label>
-                    <input type="number" id="anio" name="anio" required>
-                </div>
                 <div id="div-btns">
-                    <button type="submit" class="btn">Agregar Vehiculo</button>
-                    <button type="submit" class="btn">Listar</button>
-                    <button type="submit" class="btn">Buscar</button>
-                    <button type="submit" class="btn">Eliminar Vehiculo</button>
+                    <button type="submit" name="accion" class="btn">Agregar Vehiculo</button>
+                    <button type="submit" name="accion" class="btn">Listar</button>
+                    <button type="submit" name="accion" class="btn">Buscar</button>
+                    <button type="button" name="accion" class="btn">Eliminar Vehiculo</button>
                 </div>
             </form>
         </div>
     </main>
     <div class="cointainer text-center" id="listado"></div>
 </body>
+<script src="script.js" type="module"></script>
 </html>

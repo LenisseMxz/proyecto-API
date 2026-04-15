@@ -1,0 +1,41 @@
+let miFormulario = document.getElementById("formulario");
+let div = document.getElementById("listado");
+
+miFormulario.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let accion = e.submitter.value;
+    let placa = this.elements["placa"].value;
+    let marca = this.elements["marca"].value;
+    let modelo = this.elements["modelo"].value;
+
+    if (accion === "buscar") {
+        fetch(`http://localhost:3000/vehiculos/${placa}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+
+            div.innerHTML = "";
+            div.innerHTML = `<div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">${data.placa}</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">${data.marca}</h6>
+                                <p class="card-text">${data.modelo}</p>
+                            </div>
+                            </div>`
+            
+        });
+    }
+    if (accion == "eliminar") {
+        fetch(`http://localhost:3000/vehiculos/${placa}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            
+            div.innerHTML = "";
+            div.innerHTML = `El vehiculo con placa: ${placa} ha sido eliminado del almacen`;
+        });
+    }
+});
