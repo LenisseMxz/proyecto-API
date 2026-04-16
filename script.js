@@ -56,3 +56,25 @@ miFormulario.addEventListener("submit", function(e){
         });
     }
 });
+
+const btnAdd=document.getElementById("btnAdd");
+btnAdd.addEventListener("click",()=>{
+    let placa = this.elements["placa"].value;
+    let marca = this.elements["marca"].value;
+    let modelo = this.elements["modelo"].value;
+    fetch('http://localhost:3000/vehiculos', {
+        method: 'POST',
+        body: JSON.stringify({
+            placa: placa,
+            marca: marca,
+            modelo: modelo,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+        .then((response) => response.json())
+        .then((json) => {
+            console.log(json);
+        });
+})
