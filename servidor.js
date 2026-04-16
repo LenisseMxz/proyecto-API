@@ -1,11 +1,13 @@
 import express from 'express'
+import cors from "cors";
+
+import { Almacen } from "./clases.js";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-const miAlmacen = new Almacen();
-
-app.get("/vehiculos/placa", (req, res) => {
+app.get(`/vehiculos/:placa`, (req, res) => {
 
     let resultado = miAlmacen.buscar(req.params.placa);
 
