@@ -1,11 +1,21 @@
 import express from 'express'
 import cors from "cors";
 
-import { Almacen } from "./clases.js";
+import { Almacen } from "./clases.js"; // no se si esto se deba resolver??
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.post('/vehiculos', (req, res) => { // pendiente
+
+    let resultado = Almacen.vehiculos.agregar(req.params)
+
+    if(Almacen.vehiculos)
+        res.json(Almacen.vehiculos)
+    else
+        res.json({})
+})
 
 app.get('/vehiculos', (req, res) => {
     if(Almacen.vehiculos)

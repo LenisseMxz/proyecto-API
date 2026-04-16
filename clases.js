@@ -20,11 +20,9 @@ class Almacen {
         this.vehiculos = [];
     }
     agregar(vehiculo) {
-        if (buscar( vehiculo.placa)!=null) {
-
+        if (buscar(vehiculo.placa)!=null) {
             return false;
         }  
-        
         this.vehiculos.push(vehiculo);
         return true;  
     }
@@ -45,7 +43,6 @@ class Almacen {
             this.vehiculos.splice(index, 1);
             return true;
         }
-
         return false;
     }
 }

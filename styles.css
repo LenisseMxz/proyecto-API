@@ -1,0 +1,30 @@
+#div-formulario {
+    margin: 2%;
+    padding: 2%;
+    border-radius: 10px;
+    background-color: #ececf9;
+}
+#div-inputs {
+    margin: 2%;
+    color: #131339;
+    font-family: "Arial Rounded MT", Helvetica, sans-serif;
+}
+#div-btns {
+    padding: 2%;
+    color: #131339;
+    font-family: "Arial Rounded MT", Helvetica, sans-serif;
+}
+.btn {
+    background-color: #c6c6ec;
+}
+header {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding: 2%;
+    border-radius: 10px;
+    background-color: #6666cc;
+}
+h1 {
+    color: #131339;
+    font-family: "Arial Rounded MT", Helvetica, sans-serif;
+}
