@@ -22,8 +22,25 @@ miFormulario.addEventListener("submit", function(e){
                                 <h6 class="card-subtitle mb-2 text-body-secondary">${data.marca}</h6>
                                 <p class="card-text">${data.modelo}</p>
                             </div>
-                            </div>`
+                            </div>`;
             
+        });
+    }
+    if (accion == "listado") {
+        fetch(`http://localhost:3000/vehiculos`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            div.innerHTML = "";
+            data.forEach(vehiculo => {
+                div.innerHTML += `<div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">${vehiculo.placa}</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">${vehiculo.marca}</h6>
+                                <p class="card-text">${vehiculo.modelo}</p>
+                            </div>
+                            </div>`;
+            })
         });
     }
     if (accion == "eliminar") {

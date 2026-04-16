@@ -56,7 +56,7 @@ class Almacen {
                 </div>`;
         listar.innerHTML = texto;           
     }
-    Eliminar(placa) {
+    eliminar(placa) {
         let index = this.vehiculos.findIndex(v => v.placa === placa);
         
         if (index != -1) {

@@ -7,9 +7,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get('/vehiculos', (req, res) => {
+    if(Almacen.vehiculos)
+        res.json(Almacen.vehiculos)
+    else
+        res.json({})
+})
+
 app.get(`/vehiculos/:placa`, (req, res) => {
 
-    let resultado = miAlmacen.buscar(req.params.placa);
+    let resultado = Almacen.vehiculos.buscar(req.params.placa);
 
     if(resultado)
         res.json(resultado)
@@ -19,10 +26,10 @@ app.get(`/vehiculos/:placa`, (req, res) => {
 
 app.delete("/vehiculos/:placa", (req, res) => {
 
-    let resultado = miAlmacen.eliminar(req.params.placa);
+    let resultado = Almacen.vehiculos.eliminar(req.params.placa);
 
     if(resultado)
-        res.json(miAlmacen.vehiculos)
+        res.json({msg: "Vehiculo eliminado"})
     else
         res.json({})
 })
