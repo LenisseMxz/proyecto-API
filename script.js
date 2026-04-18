@@ -3,9 +3,9 @@ let div = document.getElementById("listado");
 
 const btnAdd=document.getElementById("btnAdd");
 btnAdd.addEventListener("click",()=>{
-    let placa = this.elements["placa"].value;
-    let marca = this.elements["marca"].value;
-    let modelo = this.elements["modelo"].value;
+    let placa = miFormulario.elements["placa"].value;
+    let marca = miFormulario.elements["marca"].value;
+    let modelo =miFormulario.elements["modelo"].value;
     fetch('http://localhost:3000/vehiculos', {
         method: 'POST',
         body: JSON.stringify({
@@ -14,8 +14,8 @@ btnAdd.addEventListener("click",()=>{
             modelo: modelo,
         }),
         headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
+            'Content-type': 'application/json'
+        }
     })
         .then((response) => response.json())
         .then((json) => {
@@ -29,12 +29,13 @@ btnListar.addEventListener("click",()=>{
         .then((res) => res.json())
         .then((json) => {
             console.log(json);
+            div.innerHTML = JSON.stringify(json);
         });
 })
 
 const btnBuscar=document.getElementById("btnBuscar");
 btnBuscar.addEventListener("click",()=>{
-    let placa = this.elements["placa"].value;
+    let placa = miFormulario.elements["placa"].value;
     fetch(`http://localhost:3000/vehiculos/${placa}`)
         .then((response) => response.json())
         .then((json) => {
@@ -44,19 +45,11 @@ btnBuscar.addEventListener("click",()=>{
 
 const btnEliminar=document.getElementById("btnEliminar");
 btnEliminar.addEventListener("click",()=>{
-    let placa = this.elements["placa"].value;
-    let marca = this.elements["marca"].value;
-    let modelo = this.elements["modelo"].value;
-    fetch('http://localhost:3000/vehiculos', {
-        method: 'POST',
-        body: JSON.stringify({
-            placa: placa,
-            marca: marca,
-            modelo: modelo,
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
+    let placa = miFormulario.elements["placa"].value;
+    let marca = miFormulario.elements["marca"].value;
+    let modelo = miFormulario.elements["modelo"].value;
+    fetch(`http://localhost:3000/vehiculos/${placa}`, {
+        method: 'DELETE',
     })
         .then((response) => response.json())
         .then((json) => {

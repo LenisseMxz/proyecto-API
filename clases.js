@@ -1,3 +1,4 @@
+
 class Vehiculo {
     #id;
     constructor( placa, marca, modelo) {
@@ -20,15 +21,13 @@ class Almacen {
         this.vehiculos = [];
     }
     agregar(vehiculo) {
-        if (buscar(vehiculo.placa)!=null) {
+        if (this.buscar(vehiculo.placa)!=null) {
             return false;
         }  
         this.vehiculos.push(vehiculo);
         return true;  
     }
     buscar(placa) {
-        let listar = document.getElementById("listado");
-        let texto = "";
         for (let i = 0; i < this.vehiculos.length; i++) {
             if (this.vehiculos[i].placa === placa) {
                 return this.vehiculos[i];
@@ -45,4 +44,6 @@ class Almacen {
         }
         return false;
     }
-}
+};
+
+export {Vehiculo, Almacen};
