@@ -1,7 +1,13 @@
 import express from 'express'
 import cors from "cors";
+import path from "path"
+import { fileURLToPath } from "url"
 
-import { Almacen, Vehiculo } from "./clases.js"; // no se si esto se deba resolver??
+import { Almacen, Vehiculo } from "./clases.js";
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname  = path.dirname(__filename)
+app.use(express.static(path.join(__dirname, "public")))
 
 const app = express();
 app.use(express.json());
@@ -9,7 +15,7 @@ app.use(cors());
 
 const almacen = new Almacen();
 
-app.post('/vehiculos', (req, res) => { // pendiente
+app.post('/vehiculos', (req, res) => {
     const { placa, marca, modelo } = req.body;
     let vehiculo = new Vehiculo(placa, marca, modelo);
     let resultado = almacen.agregar(vehiculo);
@@ -47,6 +53,8 @@ app.delete("/vehiculos/:placa", (req, res) => {
         res.json({msg: "no existe"})
 })
 
-app.listen(3000, () => {
-    console.log("Servidor iniciado en el puerto 3000");
-})
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log("Server is running on port" + PORT);
+});

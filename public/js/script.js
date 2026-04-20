@@ -36,6 +36,7 @@ btnListar.addEventListener("click",()=>{
 const btnBuscar=document.getElementById("btnBuscar");
 btnBuscar.addEventListener("click",()=>{
     let placa = miFormulario.elements["placa"].value;
+    console.log(placa);
     fetch(`http://localhost:3000/vehiculos/${placa}`)
         .then((response) => response.json())
         .then((json) => {
